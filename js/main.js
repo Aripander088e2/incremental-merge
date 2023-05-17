@@ -194,7 +194,7 @@ const UPGRADE = {
             level: () => { return player.minMergeLevel },
             cost: () => { return E(3+(player.minMergeLevel-1)/(25
                 *(player.prestige.upgs.includes(32)?1.25:1)
-                *(player.prestige.upgs.includes(24)?UPGRADE.prestige[24].cur().toNumber():1))).pow(player.minMergeLevel-1).mul(1000) },
+                *(player.prestige.upgs.includes(24)?UPGRADE.prestige[24].cur().toNumber():1))).pow(player.minMergeLevel-1).mul(100) },
             buy: () => {
                 let cost = UPGRADE.merges[0].cost()
                 if (player.number.gte(cost)) {
@@ -209,7 +209,7 @@ const UPGRADE = {
             autobuy: 1,
             desc: 'Mergers spawn faster.',
             level: () => { return player.ticks },
-            cost: () => { return E(5).pow(player.ticks).mul(1000) },
+            cost: () => { return E(5).pow(player.ticks).mul(100) },
             cur: () => { return 3000/((player.ticks+1) ** (2/5)) },
             curDesc: (x) => { return notate(x)+' ms' },
             buy: () => {
@@ -236,19 +236,19 @@ const UPGRADE = {
         12: {
             desc: 'Automatically Merge all mergers like interval "Add Merger".',
             unl: () => { return player.prestige.upgs.includes(11) },
-            cost: () => { return E(1000) },
+            cost: () => { return E(10) },
         },
         13: {
             desc: 'Energy stats makes interval for Merges faster.',
             unl: () => { return player.prestige.upgs.includes(12) & player.energy.stats.gte(1) },
-            cost: () => { return E(5000) },
+            cost: () => { return E(50) },
             cur: () => { return E(player.energy.stats).add(1).pow(1/5) },
             curDesc: (x) => { return notate(x)+'x' },
         },
         21: {
             desc: 'Raise merges production by 1.15.',
             unl: () => { return player.prestige.upgs.includes(12) },
-            cost: () => { return E(20000) },
+            cost: () => { return E(200) },
         },
         22: {
             desc: 'Gain 1% Prestige points/s.',
@@ -322,19 +322,19 @@ const UPGRADE = {
         11: {
             desc: 'Highest Merge Tier boost chance to gain Energy.',
             unl: () => { return true },
-            cost: () => { return E(5) },
+            cost: () => { return E(1) },
             cur: () => { return E(player.bestMergeLevel).add(1).pow(player.prestige.upgs.includes(33)?1/3:1/5).toNumber() },
             curDesc: (x) => { return notate(x)+'x' },
         },
         12: {
             desc: 'Automatically buy Merge upgrades like interval "Add Merger".',
             unl: () => { return player.energy.upgs.includes(11) },
-            cost: () => { return E(25) },
+            cost: () => { return E(2) },
         },
         13: {
             desc: 'Prestige stats boost Energy points gain.',
             unl: () => { return player.energy.upgs.includes(12) & player.prestige.stats.gte(1) },
-            cost: () => { return E(50) },
+            cost: () => { return E(3) },
             cur: () => { return player.prestige.stats.add(1).log10().add(1).pow(0.75)
                 .pow(player.energy.upgs.includes(14)?UPGRADE.energy[14].cur():1)
             },
