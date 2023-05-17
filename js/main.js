@@ -194,7 +194,7 @@ const UPGRADE = {
             level: () => { return player.minMergeLevel },
             cost: () => { return E(3+(player.minMergeLevel-1)/(25
                 *(player.prestige.upgs.includes(32)?1.25:1)
-                *(player.prestige.upgs.includes(24)?UPGRADE.prestige[24].cur().toNumber():1))).pow(player.minMergeLevel-1).mul(100) },
+                *(player.prestige.upgs.includes(24)?UPGRADE.prestige[24].cur().toNumber():1))).pow(player.minMergeLevel-1).mul(60) },
             buy: () => {
                 let cost = UPGRADE.merges[0].cost()
                 if (player.number.gte(cost)) {
@@ -209,7 +209,7 @@ const UPGRADE = {
             autobuy: 1,
             desc: 'Mergers spawn faster.',
             level: () => { return player.ticks },
-            cost: () => { return E(5).pow(player.ticks).mul(100) },
+            cost: () => { return E(5).pow(player.ticks).mul(60) },
             cur: () => { return 3000/((player.ticks+1) ** (2/5)) },
             curDesc: (x) => { return notate(x)+' ms' },
             buy: () => {
@@ -258,17 +258,17 @@ const UPGRADE = {
         23: {
             desc: 'Unlock Sacrifice.',
             unl: () => { return player.prestige.upgs.includes(22) & !player.unlocks.includes('sacrifice') },
-            cost: () => { return E(1e6) },
+            cost: () => { return E(2e5) },
         },
         31: {
             desc: 'Energy effect formula is better.',
             unl: () => { return player.sacrifice.upgs.includes(13) & player.prestige.upgs.includes(22) },
-            cost: () => { return E(1e6) },
+            cost: () => { return E(3e5) },
         },
         32: {
             desc: 'Merge upgrade 1 cost is 25% cheaper.',
             unl: () => { return player.sacrifice.upgs.includes(13) & player.prestige.upgs.includes(22) },
-            cost: () => { return E(3e6) },
+            cost: () => { return E(8e5) },
         },
         33: {
             desc: 'Energy upgrade 1 formula is better.',
