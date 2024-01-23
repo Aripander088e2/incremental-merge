@@ -227,7 +227,7 @@ const UPGRADE = {
         11: {
             desc: 'Highest Merge Tier boost Prestige gain.',
             unl: () => { return true },
-            cost: () => { return E(250) },
+            cost: () => { return E(5) },
             cur: () => { return E(player.bestMergeLevel).add(1).pow(player.energy.upgs.includes(22)?1/2:1/6)
                 .pow(player.prestige.upgs.includes(15)?UPGRADE.prestige[15].cur():1)
             },
@@ -253,27 +253,27 @@ const UPGRADE = {
         22: {
             desc: 'Gain 1% Prestige points/s.',
             unl: () => { return player.prestige.upgs.includes(21) },
-            cost: () => { return E(50000) },
+            cost: () => { return E(500) },
         },
         23: {
             desc: 'Unlock Sacrifice.',
             unl: () => { return player.prestige.upgs.includes(22) & !player.unlocks.includes('sacrifice') },
-            cost: () => { return E(2e5) },
+            cost: () => { return E(2e4) },
         },
         31: {
             desc: 'Energy effect formula is better.',
             unl: () => { return player.sacrifice.upgs.includes(13) & player.prestige.upgs.includes(22) },
-            cost: () => { return E(3e5) },
+            cost: () => { return E(3e4) },
         },
         32: {
             desc: 'Merge upgrade 1 cost is 25% cheaper.',
             unl: () => { return player.sacrifice.upgs.includes(13) & player.prestige.upgs.includes(22) },
-            cost: () => { return E(8e5) },
+            cost: () => { return E(8e4) },
         },
         33: {
             desc: 'Energy upgrade 1 formula is better.',
             unl: () => { return player.sacrifice.upgs.includes(13) & player.prestige.upgs.includes(22) },
-            cost: () => { return E(6e6) },
+            cost: () => { return E(2e5) },
         },
         14: {
             desc: 'Raise Prestige gain by 1.25.',
@@ -343,24 +343,24 @@ const UPGRADE = {
         21: {
             desc: 'Raise Prestige effect by 1.15.',
             unl: () => { return player.sacrifice.upgs.includes(12) & player.energy.upgs.includes(13) },
-            cost: () => { return E(5000) },
+            cost: () => { return E(1000) },
         },
         22: {
             desc: 'Prestige upgrade 1 formula is better.',
             unl: () => { return player.sacrifice.upgs.includes(12) & player.energy.upgs.includes(13) },
-            cost: () => { return E(20000) },
+            cost: () => { return E(4000) },
         },
         23: {
             desc: 'Energy Stats boost Energy gain.',
             unl: () => { return player.sacrifice.upgs.includes(12) & player.energy.upgs.includes(13) },
-            cost: () => { return E(50000) },
+            cost: () => { return E(6000) },
             cur: () => { return player.energy.stats.add(1).log10().add(1).pow(0.5) },
             curDesc: (x) => { return notate(x)+'x' },
         },
         31: {
             desc: 'Raise Energy gain by 1.25.',
             unl: () => { return player.energy.upgs.includes(23) & player.atoms.stats.gte(ATOMS.milestones[11].req) },
-            cost: () => { return E(5e8) },
+            cost: () => { return E(5e6) },
         },
         32: {
             desc: 'Prestige gain formula is better.',
