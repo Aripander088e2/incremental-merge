@@ -89,7 +89,7 @@ const ATOMS = {
         },
         42: {
             desc: 'Unlock Uranium on Nuclear.',
-            req: E(1e5),
+            req: E(3e4),
         },
         43: {
             desc: 'Placeholder.',
