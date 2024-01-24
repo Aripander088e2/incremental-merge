@@ -562,14 +562,14 @@ const UPGRADE = {
         33: {
             desc: 'Highest Merge Tier boost Preons gain.',
             unl: () => { return player.preons.upgs.includes(24) },
-            cost: () => { return E(1e10) },
+            cost: () => { return E(1e8) },
             cur: () => { return E(player.bestMergeLevel).add(1).pow(0.75) },
             curDesc: (x) => { return notate(x)+'x' },
         },
         34: {
             desc: 'Unlock Atoms.',
             unl: () => { return player.preons.upgs.includes(24) & !player.unlocks.includes('atoms') },
-            cost: () => { return E(1e11) },
+            cost: () => { return E(4e9) },
         },
         15: {
             desc: 'Nuclear Powers boost Preons gain.',
